@@ -19,14 +19,27 @@ public class SwaggerConfig {
     private static final String title = "WEB REST API";
     private static final String description = "RESTful API for WEB";
 
-    @Bean
+    @Bean(value = "defaultApi")
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("主接口")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example.demo.controller"))
                 .paths(PathSelectors.any())
-                .build().apiInfo(apiInfo());
+                .build();
     }
+    @Bean(value = "groupApi")
+    public Docket groupRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(groupApiInfo())
+                .groupName("分组接口")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.example.demo.controller"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
@@ -36,4 +49,14 @@ public class SwaggerConfig {
                 .version(SWAGGER_API_VERSION)
                 .build();
     }
+    private ApiInfo groupApiInfo() {
+        return new ApiInfoBuilder()
+                .title(title)
+                .description(description)
+                .license(LICENSE_TEXT)
+                .version(SWAGGER_API_VERSION)
+                .build();
+    }
+
+
 }
