@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "Student")
 public class Student implements Serializable {
 
     @Id

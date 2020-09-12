@@ -53,11 +53,16 @@
 									th:if="${#fields.hasErrors('code')}" th:errors="*{code}"
 									class="text-danger"></span>
 							</div>
-							<div class="col-md-6">
+							<div class="form-group  col-md-6">
 								<input type="submit" class="btn btn-primary" value="Add Student">
 							</div>
 
-							<div class="form-group col-md-8"></div>
+							<div class="form-group col-md-8">
+								<p class="my-5">
+									<a href="/students/list" class="btn btn-primary"><i
+											class="fas fa-user-plus ml-2"> list Student</i></a>
+								</p>
+							</div>
 
 						</div>
 					</form>
